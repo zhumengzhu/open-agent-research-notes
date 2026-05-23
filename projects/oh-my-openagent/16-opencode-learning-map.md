@@ -45,3 +45,9 @@
 - [ ] 能解释 OmO 为什么要 patch sort shim（并能指出这是权衡不是理想方案）
 - [ ] 能给出“若重做一版 OmO，哪些能力应该下沉到 OpenCode 内核”
 
+---
+
+## 5) 边界对照（优先读）
+
+→ **[OpenCode ↔ OmO 边界](../../comparisons/opencode-vs-omo-boundary.md)**（职责表、Hook 对照、主链路时序）
+

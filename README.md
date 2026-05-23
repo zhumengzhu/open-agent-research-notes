@@ -23,6 +23,8 @@
 | [openclaw](./projects/openclaw/) | 外部系统与 agent 会话的双向集成 |
 | [claude-code](./projects/claude-code/) | Claude Code 扩展生态与工具协议 |
 
+**跨项目对照：** [OpenCode ↔ OmO 边界](./comparisons/opencode-vs-omo-boundary.md)
+
 ## 目录
 
 - `projects/`：按项目分区的学习笔记
