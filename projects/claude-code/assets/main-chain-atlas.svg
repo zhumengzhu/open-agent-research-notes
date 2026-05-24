@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-label="Claude Code main chain">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="ext" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="data" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="340" rx="16" fill="url(#bg)"/>
+  <text x="480" y="34" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Claude Code Main Chain (v2.1.88)</text>
+  <text x="480" y="54" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">entry - QueryEngine - queryLoop - callModel - tools - loop</text>
+  <g>
+    <rect x="20" y="88" width="88" height="52" rx="10" fill="url(#ext)"/>
+    <text x="64" y="110" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">main.tsx</text>
+    <text x="64" y="126" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="9">REPL</text>
+    <rect x="118" y="88" width="88" height="52" rx="10" fill="url(#ext)"/>
+    <text x="162" y="110" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">print.ts</text>
+    <text x="162" y="126" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="9">-p SDK</text>
+    <rect x="224" y="80" width="100" height="68" rx="10" fill="url(#ext)"/>
+    <text x="274" y="104" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">processUser</text>
+    <text x="274" y="120" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="9">Input</text>
+    <text x="274" y="134" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="9">slash cmds</text>
+    <rect x="342" y="80" width="108" height="68" rx="10" fill="url(#core)"/>
+    <text x="396" y="104" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="700">QueryEngine</text>
+    <text x="396" y="122" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">submitMessage</text>
+    <text x="396" y="136" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">system prompt</text>
+    <rect x="468" y="72" width="120" height="84" rx="10" fill="url(#core)"/>
+    <text x="528" y="98" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">query.ts</text>
+    <text x="528" y="116" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">queryLoop</text>
+    <text x="528" y="130" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">compact first</text>
+    <text x="528" y="144" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">while true</text>
+    <rect x="606" y="88" width="100" height="52" rx="10" fill="url(#core)"/>
+    <text x="656" y="110" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">callModel</text>
+    <text x="656" y="126" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="9">api/claude</text>
+    <rect x="724" y="80" width="108" height="68" rx="10" fill="url(#data)"/>
+    <text x="778" y="104" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">StreamingTool</text>
+    <text x="778" y="120" text-anchor="middle" fill="#d1fae5" font-family="system-ui,sans-serif" font-size="9">Executor</text>
+    <text x="778" y="134" text-anchor="middle" fill="#d1fae5" font-family="system-ui,sans-serif" font-size="9">tools/*</text>
+    <rect x="850" y="88" width="90" height="52" rx="10" fill="url(#data)"/>
+    <text x="895" y="110" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="10" font-weight="600">canUseTool</text>
+    <text x="895" y="126" text-anchor="middle" fill="#d1fae5" font-family="system-ui,sans-serif" font-size="9">permission</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M108 114 H118"/><path d="M206 114 H224"/><path d="M324 114 H342"/>
+    <path d="M450 114 H468"/><path d="M588 114 H606"/><path d="M706 114 H724"/>
+    <path d="M832 114 H850"/>
+  </g>
+  <path d="M778 148 C778 200 528 200 528 156" stroke="#64748b" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="650" y="192" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">tool_result - next loop iter</text>
+  <rect x="20" y="228" width="920" height="88" rx="10" fill="#1c1917" stroke="#78350f" stroke-width="1"/>
+  <text x="36" y="250" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="11" font-weight="600">L0 kernel (read first)</text>
+  <text x="36" y="270" fill="#a8a29e" font-family="system-ui,sans-serif" font-size="10">QueryEngine.ts | query.ts | services/tools/* | services/api/claude.ts</text>
+  <text x="36" y="290" fill="#78716c" font-family="system-ui,sans-serif" font-size="10">L1: tools.ts compact/* hooks/* mcp/* | L2: main print components/* | See doc 26-main-chain-atlas.md</text>
+</svg>
