@@ -8,6 +8,7 @@
 | [oh-my-openagent/](./oh-my-openagent/) | [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | [README](./oh-my-openagent/README.md) |
 | [openclaw/](./openclaw/) | [openclaw/openclaw](https://github.com/openclaw/openclaw) | [README](./openclaw/README.md) |
 | [claude-code/](./claude-code/) | [anthropics/claude-code](https://github.com/anthropics/claude-code) · [ultraworkers/claw-code](https://github.com/ultraworkers/claw-code) · [zhumengzhu/claude-code](https://github.com/zhumengzhu/claude-code) | [README](./claude-code/README.md) |
+| [hermes-agent/](./hermes-agent/) | [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [README](./hermes-agent/README.md) |
 
 每个项目目录建议包含：
 
