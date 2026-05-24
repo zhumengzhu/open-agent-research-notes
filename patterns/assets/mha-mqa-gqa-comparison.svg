@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#888"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="400" fill="#ffffff" rx="8"/>
+
+  <!-- ===== Panel 1: MHA ===== -->
+  <g transform="translate(20, 20)">
+    <rect width="270" height="360" fill="#f8f9fa" rx="6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="135" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#212529">MHA (Multi-Head)</text>
+    <text x="135" y="52" text-anchor="middle" font-size="12" fill="#6c757d">每个 Q head 有独立 K,V</text>
+
+    <!-- Q Heads row -->
+    <text x="20" y="82" font-size="12" font-weight="600" fill="#495057">Q Heads</text>
+    <rect x="20" y="92" width="50" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="45" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q1</text>
+    <rect x="78" y="92" width="50" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="103" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q2</text>
+    <rect x="136" y="92" width="50" height="28" rx="4" fill="#50B86C" filter="url(#shadow)"/>
+    <text x="161" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q3</text>
+    <rect x="194" y="92" width="50" height="28" rx="4" fill="#9B59B6" filter="url(#shadow)"/>
+    <text x="219" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q4</text>
+
+    <!-- KV Heads row -->
+    <text x="20" y="170" font-size="12" font-weight="600" fill="#495057">KV Heads</text>
+    <rect x="20" y="180" width="50" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="45" y="199" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV1</text>
+    <rect x="78" y="180" width="50" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="103" y="199" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV2</text>
+    <rect x="136" y="180" width="50" height="28" rx="4" fill="#50B86C" filter="url(#shadow)"/>
+    <text x="161" y="199" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV3</text>
+    <rect x="194" y="180" width="50" height="28" rx="4" fill="#9B59B6" filter="url(#shadow)"/>
+    <text x="219" y="199" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV4</text>
+
+    <!-- Connection lines -->
+    <line x1="45" y1="120" x2="45" y2="180" stroke="#4A90D9" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="103" y1="120" x2="103" y2="180" stroke="#E8833A" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="161" y1="120" x2="161" y2="180" stroke="#50B86C" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="219" y1="120" x2="219" y2="180" stroke="#9B59B6" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+
+    <!-- Stats -->
+    <rect x="20" y="240" width="230" height="100" fill="#fff" rx="4" stroke="#e9ecef" stroke-width="1"/>
+    <text x="135" y="262" text-anchor="middle" font-size="12" font-weight="600" fill="#212529">KV Cache Size</text>
+    <text x="135" y="286" text-anchor="middle" font-size="22" font-weight="700" fill="#dc3545">H × KV</text>
+    <text x="135" y="308" text-anchor="middle" font-size="11" fill="#6c757d">H = number of Q heads</text>
+    <text x="135" y="326" text-anchor="middle" font-size="11" fill="#6c757d">Example: H=32 → 32 KV pairs</text>
+  </g>
+
+  <!-- ===== Panel 2: MQA ===== -->
+  <g transform="translate(315, 20)">
+    <rect width="270" height="360" fill="#f8f9fa" rx="6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="135" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#212529">MQA (Multi-Query)</text>
+    <text x="135" y="52" text-anchor="middle" font-size="12" fill="#6c757d">所有 Q heads 共享一组 K,V</text>
+
+    <!-- Q Heads row -->
+    <text x="20" y="82" font-size="12" font-weight="600" fill="#495057">Q Heads</text>
+    <rect x="20" y="92" width="50" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="45" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q1</text>
+    <rect x="78" y="92" width="50" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="103" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q2</text>
+    <rect x="136" y="92" width="50" height="28" rx="4" fill="#50B86C" filter="url(#shadow)"/>
+    <text x="161" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q3</text>
+    <rect x="194" y="92" width="50" height="28" rx="4" fill="#9B59B6" filter="url(#shadow)"/>
+    <text x="219" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q4</text>
+
+    <!-- KV Heads row -->
+    <text x="20" y="170" font-size="12" font-weight="600" fill="#495057">KV Head</text>
+    <rect x="85" y="180" width="100" height="28" rx="4" fill="#495057" filter="url(#shadow)"/>
+    <text x="135" y="199" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Shared KV</text>
+
+    <!-- Connection lines - all converging to one -->
+    <line x1="45" y1="120" x2="100" y2="180" stroke="#4A90D9" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.4"/>
+    <line x1="103" y1="120" x2="115" y2="180" stroke="#E8833A" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.4"/>
+    <line x1="161" y1="120" x2="150" y2="180" stroke="#50B86C" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.4"/>
+    <line x1="219" y1="120" x2="170" y2="180" stroke="#9B59B6" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.4"/>
+
+    <!-- Stats -->
+    <rect x="20" y="240" width="230" height="100" fill="#fff" rx="4" stroke="#e9ecef" stroke-width="1"/>
+    <text x="135" y="262" text-anchor="middle" font-size="12" font-weight="600" fill="#212529">KV Cache Size</text>
+    <text x="135" y="286" text-anchor="middle" font-size="22" font-weight="700" fill="#198754">1 × KV</text>
+    <text x="135" y="308" text-anchor="middle" font-size="11" fill="#6c757d">Fixed: always 1 KV pair</text>
+    <text x="135" y="326" text-anchor="middle" font-size="11" fill="#6c757d">32× smaller than MHA (H=32)</text>
+  </g>
+
+  <!-- ===== Panel 3: GQA ===== -->
+  <g transform="translate(610, 20)">
+    <rect width="270" height="360" fill="#f8f9fa" rx="6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="135" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#212529">GQA (Grouped-Query)</text>
+    <text x="135" y="52" text-anchor="middle" font-size="12" fill="#6c757d">Q heads 分组，每组共享 K,V</text>
+
+    <!-- Q Heads row -->
+    <text x="20" y="82" font-size="12" font-weight="600" fill="#495057">Q Heads</text>
+    <rect x="20" y="92" width="50" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="45" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q1</text>
+    <rect x="78" y="92" width="50" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="103" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q2</text>
+    <rect x="136" y="92" width="50" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="161" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q3</text>
+    <rect x="194" y="92" width="50" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="219" y="111" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Q4</text>
+
+    <!-- Group brackets -->
+    <rect x="18" y="123" width="112" height="20" rx="4" fill="none" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="74" y="137" text-anchor="middle" font-size="9" fill="#4A90D9">Group 1</text>
+    <rect x="134" y="123" width="112" height="20" rx="4" fill="none" stroke="#E8833A" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="190" y="137" text-anchor="middle" font-size="9" fill="#E8833A">Group 2</text>
+
+    <!-- KV Heads row -->
+    <text x="20" y="177" font-size="12" font-weight="600" fill="#495057">KV Heads</text>
+    <rect x="45" y="187" width="70" height="28" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
+    <text x="80" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV1</text>
+    <rect x="150" y="187" width="70" height="28" rx="4" fill="#E8833A" filter="url(#shadow)"/>
+    <text x="185" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">KV2</text>
+
+    <!-- Connection lines -->
+    <line x1="45" y1="143" x2="55" y2="187" stroke="#4A90D9" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="103" y1="143" x2="95" y2="187" stroke="#4A90D9" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="161" y1="143" x2="165" y2="187" stroke="#E8833A" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <line x1="219" y1="143" x2="205" y2="187" stroke="#E8833A" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+
+    <!-- Stats -->
+    <rect x="20" y="240" width="230" height="100" fill="#fff" rx="4" stroke="#e9ecef" stroke-width="1"/>
+    <text x="135" y="262" text-anchor="middle" font-size="12" font-weight="600" fill="#212529">KV Cache Size</text>
+    <text x="135" y="286" text-anchor="middle" font-size="22" font-weight="700" fill="#fd7e14">G × KV</text>
+    <text x="135" y="308" text-anchor="middle" font-size="11" fill="#6c757d">G = number of groups</text>
+    <text x="135" y="326" text-anchor="middle" font-size="11" fill="#6c757d">LLaMA-3: G=8 → 8 KV pairs</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(20, 20)">
+    <!-- moved to bottom -->
+  </g>
+</svg>
