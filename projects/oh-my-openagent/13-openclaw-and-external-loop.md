@@ -6,7 +6,9 @@
 
 ## 1) 双向而不是单向通知
 
-OpenClaw 有两条通道：
+OpenClaw（[openclaw/openclaw](https://github.com/openclaw/openclaw)）是独立的多通道 Gateway 产品。OmO 的 `src/openclaw/` 是在 OpenCode 插件内与其**双向集成**的桥接层，不是 OpenClaw 本体。
+
+OpenClaw 集成有两条通道：
 
 - 出站：OpenCode 事件 -> 外部系统
 - 入站：外部回复 -> 回注 tmux pane -> 回到会话

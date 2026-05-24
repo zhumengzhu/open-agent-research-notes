@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" role="img" aria-label="OpenCode main chain">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="hook" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="data" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="920" height="320" rx="16" fill="url(#bg)"/>
+  <text x="460" y="34" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="18" font-weight="700">OpenCode Main Chain</text>
+  <text x="460" y="54" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">user message - runLoop - LLM step - tool - loop</text>
+  <g>
+    <rect x="24" y="88" width="96" height="56" rx="10" fill="url(#core)"/>
+    <text x="72" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">CLI / HTTP</text>
+    <text x="72" y="128" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">entry</text>
+    <rect x="144" y="88" width="110" height="56" rx="10" fill="url(#core)"/>
+    <text x="199" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Instance</text>
+    <text x="199" y="128" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">bootstrap</text>
+    <rect x="278" y="72" width="130" height="88" rx="10" fill="url(#core)"/>
+    <text x="343" y="98" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">SessionPrompt</text>
+    <text x="343" y="116" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">chat.message</text>
+    <text x="343" y="132" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">messages.transform</text>
+    <text x="343" y="148" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">SessionRunState</text>
+    <rect x="432" y="88" width="110" height="56" rx="10" fill="url(#core)"/>
+    <text x="487" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Processor</text>
+    <text x="487" y="128" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">stream FSM</text>
+    <rect x="566" y="88" width="120" height="56" rx="10" fill="url(#core)"/>
+    <text x="626" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">llm/request</text>
+    <text x="626" y="128" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">chat.params</text>
+    <rect x="710" y="88" width="96" height="56" rx="10" fill="url(#core)"/>
+    <text x="758" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Provider</text>
+    <text x="758" y="128" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10">streamText</text>
+    <rect x="830" y="88" width="66" height="56" rx="10" fill="url(#data)"/>
+    <text x="863" y="112" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Tool</text>
+    <text x="863" y="128" text-anchor="middle" fill="#d1fae5" font-family="system-ui,sans-serif" font-size="10">execute</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M120 116 H144"/><path d="M254 116 H278"/><path d="M408 116 H432"/>
+    <path d="M542 116 H566"/><path d="M686 116 H710"/><path d="M806 116 H830"/>
+  </g>
+  <path d="M863 144 C863 200 343 200 343 160" stroke="#64748b" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="600" y="196" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">tool result feeds next runLoop</text>
+  <rect x="24" y="228" width="872" height="68" rx="10" fill="#1e1b4b" stroke="#4c1d95" stroke-width="1"/>
+  <text x="40" y="250" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Plugin.trigger hook points</text>
+  <g font-family="system-ui,sans-serif" font-size="10">
+    <rect x="40" y="258" width="108" height="26" rx="6" fill="url(#hook)"/><text x="94" y="275" text-anchor="middle" fill="#fff">chat.message</text>
+    <rect x="160" y="258" width="148" height="26" rx="6" fill="url(#hook)"/><text x="234" y="275" text-anchor="middle" fill="#fff">messages.transform</text>
+    <rect x="320" y="258" width="100" height="26" rx="6" fill="url(#hook)"/><text x="370" y="275" text-anchor="middle" fill="#fff">chat.params</text>
+    <rect x="432" y="258" width="108" height="26" rx="6" fill="url(#hook)"/><text x="486" y="275" text-anchor="middle" fill="#fff">tool.before</text>
+    <rect x="552" y="258" width="100" height="26" rx="6" fill="url(#hook)"/><text x="602" y="275" text-anchor="middle" fill="#fff">tool.after</text>
+    <rect x="664" y="258" width="72" height="26" rx="6" fill="url(#hook)"/><text x="700" y="275" text-anchor="middle" fill="#fff">event</text>
+    <rect x="748" y="258" width="72" height="26" rx="6" fill="url(#hook)"/><text x="784" y="275" text-anchor="middle" fill="#fff">config</text>
+    <rect x="832" y="258" width="52" height="26" rx="6" fill="url(#hook)"/><text x="858" y="275" text-anchor="middle" fill="#fff">tool</text>
+  </g>
+</svg>

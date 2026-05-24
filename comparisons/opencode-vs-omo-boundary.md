@@ -9,6 +9,10 @@
 
 **OpenCode 构造并运行 agent runtime（会话、LLM、工具、权限、持久化）；OmO 作为插件挂在这个 runtime 上，注入多 agent 编排、扩展工具、hook 策略与运维能力，但不拥有 session 数据库与主循环。**
 
+![OpenCode 与 OmO 边界](./assets/opencode-omo-boundary.svg)
+
+<p align="center"><sub>内核（蓝）与插件层（紫）· 边界：<code>Plugin.trigger</code></sub></p>
+
 ---
 
 ## 2. 分层图
@@ -214,5 +218,6 @@ sequenceDiagram
 ## 10. 下一步
 
 - OpenCode 内核逐文件阅读：[`projects/opencode/README.md`](../projects/opencode/README.md)
+- OmO 消息 Hook 链叙事：[`projects/oh-my-openagent/17-message-hook-journey.md`](../projects/oh-my-openagent/17-message-hook-journey.md)
 - OmO 插件机制复习：[`projects/oh-my-openagent/01-opencode-plugin-protocol.md`](../projects/oh-my-openagent/01-opencode-plugin-protocol.md)
 - 模式沉淀：[`patterns/`](../patterns/)（待写 hook 组合、config 门控模式）

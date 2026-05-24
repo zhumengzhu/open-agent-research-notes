@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 640" role="img" aria-label="OmO hook journey">
+  <defs>
+    <linearGradient id="oc" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0369a1"/><stop offset="100%" stop-color="#075985"/></linearGradient>
+    <linearGradient id="omo" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#6d28d9"/></linearGradient>
+    <marker id="down" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0,0 L4,8 L8,0 Z" fill="#a78bfa"/></marker>
+  </defs>
+  <rect width="560" height="640" rx="16" fill="#0f172a"/>
+  <text x="280" y="34" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="17" font-weight="700">OmO Hook Journey</text>
+  <text x="280" y="54" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11">OpenCode (blue) then OmO internal hooks (purple)</text>
+  <line x1="48" y1="72" x2="48" y2="610" stroke="#334155" stroke-width="3"/>
+  <circle cx="48" cy="96" r="8" fill="#38bdf8"/>
+  <rect x="72" y="76" width="460" height="52" rx="10" fill="url(#oc)"/>
+  <text x="88" y="98" fill="#e0f2fe" font-size="12" font-weight="700" font-family="system-ui,sans-serif">1 OpenCode: prompt received</text>
+  <text x="88" y="116" fill="#bae6fd" font-size="10" font-family="system-ui,sans-serif">handlers/session - SessionPrompt.prompt()</text>
+  <circle cx="48" cy="156" r="8" fill="#a78bfa"/>
+  <rect x="72" y="136" width="460" height="68" rx="10" fill="url(#omo)"/>
+  <text x="88" y="158" fill="#f3e8ff" font-size="12" font-weight="700" font-family="system-ui,sans-serif">2 chat.message - OmO orchestration</text>
+  <text x="88" y="176" fill="#ddd6fe" font-size="10" font-family="system-ui,sans-serif">modelFallback, keywordDetector, thinkMode, ...</text>
+  <text x="88" y="192" fill="#c4b5fd" font-size="9" font-family="system-ui,sans-serif">plugin/chat-message.ts</text>
+  <circle cx="48" cy="232" r="8" fill="#38bdf8"/>
+  <rect x="72" y="212" width="460" height="52" rx="10" fill="url(#oc)"/>
+  <text x="88" y="234" fill="#e0f2fe" font-size="12" font-weight="700" font-family="system-ui,sans-serif">3 OpenCode: persist user + runLoop</text>
+  <text x="88" y="252" fill="#bae6fd" font-size="10" font-family="system-ui,sans-serif">SessionRunState.ensureRunning</text>
+  <circle cx="48" cy="292" r="8" fill="#a78bfa"/>
+  <rect x="72" y="272" width="460" height="68" rx="10" fill="url(#omo)"/>
+  <text x="88" y="294" fill="#f3e8ff" font-size="12" font-weight="700" font-family="system-ui,sans-serif">4 messages.transform - context inject</text>
+  <text x="88" y="312" fill="#ddd6fe" font-size="10" font-family="system-ui,sans-serif">contextInjector, toolPairValidator, ...</text>
+  <text x="88" y="328" fill="#c4b5fd" font-size="9" font-family="system-ui,sans-serif">plugin/messages-transform.ts</text>
+  <circle cx="48" cy="368" r="8" fill="#a78bfa"/>
+  <rect x="72" y="348" width="460" height="68" rx="10" fill="url(#omo)"/>
+  <text x="88" y="370" fill="#f3e8ff" font-size="12" font-weight="700" font-family="system-ui,sans-serif">5 chat.params - model settings</text>
+  <text x="88" y="388" fill="#ddd6fe" font-size="10" font-family="system-ui,sans-serif">resolveCompatibleModelSettings, anthropicEffort</text>
+  <text x="88" y="404" fill="#c4b5fd" font-size="9" font-family="system-ui,sans-serif">plugin/chat-params.ts</text>
+  <circle cx="48" cy="444" r="8" fill="#38bdf8"/>
+  <rect x="72" y="424" width="460" height="52" rx="10" fill="url(#oc)"/>
+  <text x="88" y="446" fill="#e0f2fe" font-size="12" font-weight="700" font-family="system-ui,sans-serif">6 OpenCode: LLM stream + tool-call</text>
+  <text x="88" y="464" fill="#bae6fd" font-size="10" font-family="system-ui,sans-serif">Processor parses stream events</text>
+  <circle cx="48" cy="504" r="8" fill="#a78bfa"/>
+  <rect x="72" y="484" width="460" height="68" rx="10" fill="url(#omo)"/>
+  <text x="88" y="506" fill="#f3e8ff" font-size="12" font-weight="700" font-family="system-ui,sans-serif">7 tool.execute.before / after</text>
+  <text x="88" y="524" fill="#ddd6fe" font-size="10" font-family="system-ui,sans-serif">writeExistingFileGuard, hashlineReadEnhancer, ...</text>
+  <text x="88" y="540" fill="#c4b5fd" font-size="9" font-family="system-ui,sans-serif">tool-execute-before.ts / after.ts</text>
+  <circle cx="48" cy="584" r="8" fill="#38bdf8"/>
+  <rect x="72" y="564" width="460" height="52" rx="10" fill="url(#oc)"/>
+  <text x="88" y="586" fill="#e0f2fe" font-size="12" font-weight="700" font-family="system-ui,sans-serif">8 OpenCode: tool result - loop or idle</text>
+  <text x="88" y="604" fill="#bae6fd" font-size="10" font-family="system-ui,sans-serif">Bus events - OmO event handler may react</text>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#down)">
+    <path d="M48 104 V148"/><path d="M48 204 V224"/><path d="M48 264 V284"/><path d="M48 340 V360"/>
+    <path d="M48 416 V436"/><path d="M48 476 V496"/><path d="M48 552 V576"/>
+  </g>
+</svg>

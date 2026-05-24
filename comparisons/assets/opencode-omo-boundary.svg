@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="OpenCode and OmO boundary">
+  <defs>
+    <linearGradient id="ocBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </linearGradient>
+    <linearGradient id="omoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#581c87"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+    <linearGradient id="userBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#fcd34d"/>
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="16" fill="#0f172a"/>
+  <text x="400" y="36" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="18" font-weight="700">OpenCode Kernel vs OmO Plugin</text>
+  <text x="400" y="58" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">boundary: Plugin.trigger</text>
+
+  <rect x="320" y="72" width="160" height="44" rx="10" fill="url(#userBg)" stroke="#64748b"/>
+  <text x="400" y="100" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13" font-weight="600">User / CLI / IDE</text>
+  <path d="M400 116 V140" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="40" y="140" width="340" height="220" rx="14" fill="url(#ocBg)" stroke="#38bdf8" stroke-width="2"/>
+  <text x="210" y="168" text-anchor="middle" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="14" font-weight="700">OpenCode kernel</text>
+  <text x="210" y="186" text-anchor="middle" fill="#bae6fd" font-family="system-ui,sans-serif" font-size="11">packages/opencode</text>
+  <rect x="60" y="200" width="130" height="44" rx="8" fill="#0369a1"/>
+  <text x="125" y="222" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">SessionPrompt</text>
+  <text x="125" y="236" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="system-ui,sans-serif">runLoop + DB</text>
+  <rect x="210" y="200" width="150" height="44" rx="8" fill="#0369a1"/>
+  <text x="285" y="222" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">LLM + Provider</text>
+  <text x="285" y="236" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="system-ui,sans-serif">streamText</text>
+  <rect x="60" y="260" width="130" height="44" rx="8" fill="#0369a1"/>
+  <text x="125" y="282" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">ToolRegistry</text>
+  <text x="125" y="296" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="system-ui,sans-serif">built-in tools</text>
+  <rect x="210" y="260" width="150" height="44" rx="8" fill="#0369a1"/>
+  <text x="285" y="282" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">Session DB</text>
+  <text x="285" y="296" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="system-ui,sans-serif">Message / Part</text>
+  <rect x="120" y="320" width="180" height="28" rx="6" fill="#0284c7"/>
+  <text x="210" y="339" text-anchor="middle" fill="#fff" font-size="10" font-weight="600" font-family="system-ui,sans-serif">Plugin.trigger</text>
+
+  <rect x="392" y="200" width="16" height="120" rx="4" fill="#fcd34d"/>
+  <text x="400" y="340" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="10" font-weight="700">edge</text>
+
+  <rect x="420" y="140" width="340" height="220" rx="14" fill="url(#omoBg)" stroke="#c084fc" stroke-width="2"/>
+  <text x="590" y="168" text-anchor="middle" fill="#f3e8ff" font-family="system-ui,sans-serif" font-size="14" font-weight="700">OmO plugin layer</text>
+  <text x="590" y="186" text-anchor="middle" fill="#e9d5ff" font-family="system-ui,sans-serif" font-size="11">oh-my-openagent</text>
+  <rect x="440" y="200" width="140" height="44" rx="8" fill="#7e22ce"/>
+  <text x="510" y="222" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">10 handlers</text>
+  <text x="510" y="236" text-anchor="middle" fill="#e9d5ff" font-size="9" font-family="system-ui,sans-serif">plugin interface</text>
+  <rect x="600" y="200" width="140" height="44" rx="8" fill="#7e22ce"/>
+  <text x="670" y="222" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">54+ hooks</text>
+  <text x="670" y="236" text-anchor="middle" fill="#e9d5ff" font-size="9" font-family="system-ui,sans-serif">5-tier compose</text>
+  <rect x="440" y="260" width="140" height="44" rx="8" fill="#7e22ce"/>
+  <text x="510" y="282" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">config 6-phase</text>
+  <text x="510" y="296" text-anchor="middle" fill="#e9d5ff" font-size="9" font-family="system-ui,sans-serif">agents/tools/mcp</text>
+  <rect x="600" y="260" width="140" height="44" rx="8" fill="#7e22ce"/>
+  <text x="670" y="282" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui,sans-serif">features/*</text>
+  <text x="670" y="296" text-anchor="middle" fill="#e9d5ff" font-size="9" font-family="system-ui,sans-serif">Team / OpenClaw</text>
+  <rect x="500" y="320" width="180" height="28" rx="6" fill="#9333ea"/>
+  <text x="590" y="339" text-anchor="middle" fill="#fff" font-size="10" font-weight="600" font-family="system-ui,sans-serif">policy, not loop/DB</text>
+
+  <path d="M360 334 H440" stroke="#fcd34d" stroke-width="2.5" marker-end="url(#arr)"/>
+  <path d="M440 250 H360" stroke="#fcd34d" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="400" y="248" text-anchor="middle" fill="#fde68a" font-size="9" font-family="system-ui,sans-serif">hooks</text>
+  <text x="400" y="358" text-anchor="middle" fill="#fde68a" font-size="9" font-family="system-ui,sans-serif">config write-back</text>
+
+  <text x="40" y="396" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">kernel: loop, compaction, persistence | plugin: params, context, extra tools</text>
+</svg>
