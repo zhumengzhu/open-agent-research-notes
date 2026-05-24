@@ -19,7 +19,7 @@
 | 项目 | 内容简介 |
 |------|----------|
 | [oh-my-openagent](./projects/oh-my-openagent/) | OpenCode 插件协议、hook 体系、多 agent 编排、tool/MCP/Team Mode |
-| [opencode](./projects/opencode/) | OpenCode 内核：session、agent runtime、tool 执行、provider 调用 |
+| [opencode](./projects/opencode/) | OpenCode 内核（00–19 + 附录 A1/A2）：叙事 Trace、多模型、Processor 深读 |
 | [openclaw](./projects/openclaw/) | 外部系统与 agent 会话的双向集成 |
 | [claude-code](./projects/claude-code/) | Claude Code 扩展生态与工具协议 |
 

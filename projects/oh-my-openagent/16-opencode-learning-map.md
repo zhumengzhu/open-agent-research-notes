@@ -51,3 +51,11 @@
 
 → **[OpenCode ↔ OmO 边界](../../comparisons/opencode-vs-omo-boundary.md)**（职责表、Hook 对照、主链路时序）
 
+---
+
+## 6) OpenCode 内核笔记（OARN）
+
+→ **[projects/opencode/](../opencode/README.md)** — **00–19 + 附录 A1/A2**（[18 总图](../opencode/18-main-chain-atlas.md)、[A1 叙事](../opencode/appendix/A1-full-trace-narrative.md)、[19 多模型](../opencode/19-multi-model-and-provider-system.md)）
+
+建议：**18 → A1 → 09 → 19** 建立内核直觉，再按需跳模块。
+
