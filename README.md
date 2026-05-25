@@ -18,6 +18,7 @@
 | [oh-my-openagent](./projects/oh-my-openagent/) | [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | 插件协议、hook 体系、多 agent 编排、tool/MCP/Team Mode | [目录](./projects/oh-my-openagent/README.md) |
 | [openclaw](./projects/openclaw/) | [openclaw/openclaw](https://github.com/openclaw/openclaw) | 个人 AI 助手 Gateway、多通道 inbox（独立产品） | [目录](./projects/openclaw/README.md) |
 | [claude-code](./projects/claude-code/) | [anthropics/claude-code](https://github.com/anthropics/claude-code) · [ultraworkers/claw-code](https://github.com/ultraworkers/claw-code) · [zhumengzhu/claude-code](https://github.com/zhumengzhu/claude-code) | 官方产品 + Rust 社区重写 + 个人 TS 研究快照 | [目录](./projects/claude-code/README.md) |
+| **[pi](./projects/pi/)** | [earendil-works/pi](https://github.com/earendil-works/pi) | 极简主义 coding agent：4 工具 + 游戏引擎架构 + 激进扩展性 | [开始学习](./projects/pi/README.md) |
 
 **跨项目对照：** [OpenCode ↔ OmO 边界](./comparisons/opencode-vs-omo-boundary.md)
 
