@@ -59,6 +59,8 @@ Pi 是 Mario Zechner 对 Claude Code 日益复杂化的反抗。他用游戏引�
 
 ## 外部资料（取长补短）
 
+### 官方/一手来源
+
 | 来源 | 链接 | 补什么 |
 |------|------|--------|
 | awesome-ai-anatomy | [NeuZhou/awesome-ai-anatomy/pi-mono](https://github.com/NeuZhou/awesome-ai-anatomy/tree/main/pi-mono) | 深度源码拆解（147K LOC 逐行分析） |
@@ -66,6 +68,31 @@ Pi 是 Mario Zechner 对 Claude Code 日益复杂化的反抗。他用游戏引�
 | Pragmatic Engineer | [采访 Mario](https://newsletter.pragmaticengineer.com/p/building-pi-and-what-makes-self-modifying) | 哲学讨论 |
 | Agent Architectures | [agentarchitectures.com/framework/pi-dev](https://agentarchitectures.com/framework/pi-dev) | 架构分析 |
 | Pi 文档 | [pi.dev/docs](https://pi.dev/docs/latest) | 官方文档 |
+
+### 社区评测与深度文章
+
+| 来源 | 链接 | 补什么 |
+|------|------|--------|
+| NeuralNoise（Dr. Pasquale Minervini） | [Harness-Bench: 本地 LLM vs 编码 Agent](https://neuralnoise.com/2026/harness-bench-wip/) | **最重要的 benchmark 评测**：Pi 在 5 个 harness 中以 76.9% 通过率排第一；发现 opencode 会偷读隐藏测试文件 |
+| Patshead.com | [从 Barebones 到超越 OpenCode](https://blog.patshead.com/2026/05/pi-coding-agent-from-barebones-to-better-than-opencode.html) | OpenCode 用户转 Pi 的详细实操，LazyPi 推荐，完整扩展清单 |
+| DeepakNess | [Pi Coding Agent 安装与使用](https://deepakness.com/blog/pi-agent-setup/) | 日常使用实录：DeepSeek 抓取 285K URL 仅 $1，AGENTS.md / APPEND_SYSTEM.md 最佳实践 |
+| Michal Vanko | [Week with my-pi-agent](https://michalvanko.dev/blog/2026-04-01-week-with-my-pi-agent) | 纯 Pi 开发一周体验，debug memory leak 实战，/clarify 工作流 |
+| Junee | [Pi-mono 上手：干净内核，不是万能套娃](https://jun.ee/archives/pi-mono-minimal-agent-kernel-openclaw/) | 最详尽的中文架构分析，SDK 嵌入、权限管理、团队 SOP |
+| 脈報 | [Pi 是 coding agent 界的 Neovim](https://heymaibao.com/pi-coding-agent-neovim/) | 关键洞察：「node_modules 中的 markdown 是写给 agent 看的」；extension vs skill context 差异 |
+| AI Link Lab | [Pi：故意不替你做决定的 Coding Agent](https://www.ailinklab.com/zh/opensource/pi-agent-harness/) | 中文全景式介绍，SDK 代码示例，provider 抽象层分析 |
+| hitorch | [Pi Coding Agent 深度解析](https://hitorch.cn/pi-coding-agent/) | 418 行 agent loop 技术拆解，Harness Effect（框架效应）阐述 |
+| allthings.how | [Pi coding agent: The minimal terminal harness](https://allthings.how/pi-coding-agent-the-minimal-terminal-harness-you-extend-yourself/) | 最完整的英文入门指南之一，4 种操作模式 + 4 种扩展面 |
+| cellinlab | [Pi Agent 原理与实现](https://how-pi-agent-works.vercel.app/) | 中文手把手教学：从零实现简化版 Pi Agent 核心机制（VitePress + 可运行 demo） |
+
+### 视频资料
+
+| 来源 | 链接 | 时长 | 播放量 | 补什么 |
+|------|------|------|--------|--------|
+| IndyDevDan | [The ONLY REAL Claude Code COMPETITOR](https://www.youtube.com/watch?v=f8cfH5XX-XU) | 51min | 209K | 从零构建 14 种 Pi 变体，多 agent 编排、meta-agent |
+| Ben Davis | [How I Turned Pi Into the Ultimate Coding Agent](https://www.youtube.com/watch?v=6xXjHM3V1zM) | 21min | 68K | **已弃 Codex 转 Pi 主力**，extension 系统深度实操 |
+| Owain Lewis | [Pi Coding Agent (Free Course)](https://www.youtube.com/watch?v=BZ0w0JhPQ9o) | 28min | 46K | 完整免费教程：安装→provider→扩展→skills→vs Claude Code |
+| Christian Lempa | [Pi: Open-Source AI Agent Terminal Set-Up](https://www.youtube.com/watch?v=04EL2_Llenc) | 20min | 31K | DevOps / homelab 场景实战 |
+| Cole Medin | [Building a Custom Coding Agent Live](https://www.youtube.com/watch?v=lK9o5Wu2upU) | 1h36min | 18K | 直播构建 Pi 环境，涉及 Kimi / MiniMax 等新模型 |
 
 ---
 
