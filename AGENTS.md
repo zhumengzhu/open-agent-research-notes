@@ -16,6 +16,7 @@
 | `projects/opencode/` | OpenCode 内核与 runtime |
 | `projects/openclaw/` | 外部系统双向集成 |
 | `projects/claude-code/` | Claude Code 扩展生态 |
+| `projects/multica/` | AI Managed Agents 平台：agent 作为一等公民、Squads、Skills |
 | `comparisons/` | 跨项目横向比较 |
 | `patterns/` | 可复用模式与反模式 |
 | `templates/` | 新项目学习模板 |

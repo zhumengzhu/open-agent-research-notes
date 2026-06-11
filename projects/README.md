@@ -10,6 +10,8 @@
 | [claude-code/](./claude-code/) | [anthropics/claude-code](https://github.com/anthropics/claude-code) · [ultraworkers/claw-code](https://github.com/ultraworkers/claw-code) · [zhumengzhu/claude-code](https://github.com/zhumengzhu/claude-code) | [README](./claude-code/README.md) |
 | [hermes-agent/](./hermes-agent/) | [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [README](./hermes-agent/README.md) |
 | [pi/](./pi/) | [earendil-works/pi](https://github.com/earendil-works/pi) | [README](./pi/README.md) |
+| [mimo-code/](./mimo-code/) | [XiaomiMiMo/MiMo-Code](https://github.com/XiaomiMiMo/MiMo-Code) | [README](./mimo-code/README.md) |
+| [multica/](./multica/) | [multica-ai/multica](https://github.com/multica-ai/multica) | [README](./multica/README.md) |
 
 每个项目目录建议包含：
 
