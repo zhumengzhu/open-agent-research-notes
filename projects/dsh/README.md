@@ -18,6 +18,7 @@ dsh 把 cordis 当作"框架层"整体 vendor 进来并深度改造（fiber 生�
 | 编号 | 主题 | 层级 | 核心问题 |
 |------|------|------|----------|
 | [01](./01-session-telemetry-chain.md) | session-telemetry 捕获→脱敏→OTel 导出全链路 | 深度 | 一条 agent 交互如何变成 OTel 日志？脱敏在哪一层做？ |
+| [02](./02-session-telemetry-detail.md) | 机制深挖（SVG 图解版） | 深度 | 捕获器内部状态、三模式取舍、SDK 管道与失败模式 |
 | 02（规划中） | vendor 与上游 cordis 的差异清单 | 深度 | dsh 对 cordis 改了哪些？为什么？ |
 
 ## 系统关系（dsh 内部视角）

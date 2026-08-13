@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" role="img" aria-label="OTel backend modes and pipeline">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="mode" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48"/><stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="sdk" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="col" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="740" rx="16" fill="url(#bg)"/>
+  <text x="600" y="30" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="19" font-weight="700">OpenTelemetry Backend (session-telemetry-otel)</text>
+  <text x="600" y="51" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">mode decides capture path; SDK pipeline is composed as-is · positive opt-in, default DISABLED · config validated fail-fast at plugin load</text>
+
+  <!-- mode decision column -->
+  <g>
+    <rect x="20" y="72" width="300" height="30" rx="6" fill="url(#mode)"/>
+    <text x="170" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">CAPTURE MODE (Config.mode)</text>
+    <rect x="20" y="102" width="300" height="432" rx="7" fill="#4c0519" stroke="#fda4af" stroke-opacity="0.4"/>
+    <rect x="32" y="114" width="276" height="60" rx="6" fill="#5f1424" stroke="#fda4af"/>
+    <text x="170" y="132" text-anchor="middle" fill="#ffe4e6" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">resolveMode()</text>
+    <text x="170" y="149" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">schemastery union · unknown value →</text>
+    <text x="170" y="163" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">assertNever throw (fail-closed)</text>
+    <rect x="32" y="186" width="276" height="94" rx="6" fill="#881337" stroke="#fb7185"/>
+    <text x="170" y="204" text-anchor="middle" fill="#fff1f2" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">DISABLED (default)</text>
+    <text x="170" y="221" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">DROP_RECORD · zero SDK state</text>
+    <text x="170" y="237" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">no provider/processor/exporter built</text>
+    <text x="170" y="253" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">feedback/record → warn stays local</text>
+    <rect x="32" y="292" width="276" height="94" rx="6" fill="#881337" stroke="#fb7185"/>
+    <text x="170" y="310" text-anchor="middle" fill="#fff1f2" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">FULL</text>
+    <text x="170" y="327" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">live coordinator ('live')</text>
+    <text x="170" y="343" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">directEmit = enqueue (public emit)</text>
+    <text x="170" y="359" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">records stream in real time</text>
+    <rect x="32" y="398" width="276" height="94" rx="6" fill="#881337" stroke="#fb7185"/>
+    <text x="170" y="416" text-anchor="middle" fill="#fff1f2" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">FEEDBACK_ONLY</text>
+    <text x="170" y="433" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">on-demand coordinator</text>
+    <text x="170" y="449" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">only feedback/record triggers replay</text>
+    <text x="170" y="465" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">consent = events[event.seq] identity</text>
+    <text x="170" y="516" text-anchor="middle" fill="#fb7185" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">service inject = ['sessions']</text>
+    <text x="170" y="530" text-anchor="middle" fill="#fb7185" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">duplicate load throws (cordis rule)</text>
+  </g>
+
+  <!-- SDK pipeline column -->
+  <g>
+    <rect x="340" y="72" width="840" height="30" rx="6" fill="url(#sdk)"/>
+    <text x="760" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">OTel JS SDK PIPELINE (uploading modes)</text>
+    <rect x="340" y="102" width="840" height="432" rx="7" fill="#172554" stroke="#3b82f6" stroke-opacity="0.4"/>
+    <rect x="352" y="114" width="816" height="82" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="760" y="134" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="11" font-weight="600">LoggerProvider</text>
+    <text x="760" y="153" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">resource: service.name + service.version (APP_IDENTITY) · user.id = anonymous UUID ($DSH_HOME/.anonymous-user-id)</text>
+    <text x="760" y="169" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">identity carried once per export batch, not per record · provider = single SDK caller (no concurrent flushes)</text>
+    <path d="M760 196 L760 210" stroke="#60a5fa" stroke-width="2" fill="none"/>
+    <rect x="500" y="210" width="240" height="66" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="620" y="230" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">Logger · ledger scope</text>
+    <text x="620" y="248" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">@deepseek-ai/dsh-session-</text>
+    <text x="620" y="262" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">telemetry-otel</text>
+    <rect x="780" y="210" width="240" height="66" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="900" y="230" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">Logger · ops scope</text>
+    <text x="900" y="248" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">.../ops</text>
+    <text x="900" y="262" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">agent-error · shutdown</text>
+    <text x="352" y="300" text-anchor="middle" fill="#60a5fa" font-family="ui-monospace,monospace" font-size="9.5">logger.emit({ timestamp, observedTimestamp, severity, body: AnyValue, attributes })</text>
+    <rect x="352" y="314" width="816" height="70" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="760" y="334" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="11" font-weight="600">BatchLogRecordProcessor</text>
+    <text x="760" y="352" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">processor config passed verbatim (scheduledDelayMillis, retry, queue bounds, loss policy)</text>
+    <text x="760" y="368" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">maxExportBatchSize must be positive integer — SDK accepts non-positive but shutdown hangs forever</text>
+    <rect x="352" y="396" width="816" height="70" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="760" y="416" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="11" font-weight="600">OTLPLogExporter</text>
+    <text x="760" y="434" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">exporter config passed verbatim (headers, timeoutMillis, compression, keepAlive, …)</text>
+    <text x="760" y="450" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">url must be http(s); required in FULL / FEEDBACK_ONLY</text>
+    <rect x="352" y="478" width="816" height="44" rx="6" fill="url(#col)"/>
+    <text x="760" y="504" text-anchor="middle" fill="#fff" font-family="ui-monospace,monospace" font-size="11" font-weight="700">collector (OTLP/HTTP logs endpoint)</text>
+  </g>
+
+  <!-- bottom: field mapping + risk notes -->
+  <rect x="20" y="546" width="1160" height="170" rx="10" fill="#0b1220" stroke="#334155"/>
+  <text x="40" y="568" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Field mapping (seam record → OTel log record)</text>
+  <g font-family="ui-monospace,monospace" font-size="9.5">
+    <rect x="40" y="580" width="260" height="24" rx="4" fill="#1e293b"/><text x="50" y="596" fill="#93c5fd">time</text>
+    <rect x="310" y="580" width="300" height="24" rx="4" fill="#1e293b"/><text x="320" y="596" fill="#e2e8f0">timestamp / observedTimestamp</text>
+    <rect x="40" y="612" width="260" height="24" rx="4" fill="#1e293b"/><text x="50" y="628" fill="#fda4af">severity</text>
+    <rect x="310" y="612" width="300" height="24" rx="4" fill="#1e293b"/><text x="320" y="628" fill="#e2e8f0">SeverityNumber INFO 9 / WARN 13 / ERROR 17</text>
+    <rect x="40" y="644" width="260" height="24" rx="4" fill="#1e293b"/><text x="50" y="660" fill="#6ee7b7">body</text>
+    <rect x="310" y="644" width="300" height="24" rx="4" fill="#1e293b"/><text x="320" y="660" fill="#e2e8f0">AnyValue (guaranteed by append-time JSON validation)</text>
+    <rect x="40" y="676" width="260" height="24" rx="4" fill="#1e293b"/><text x="50" y="692" fill="#c4b5fd">attributes</text>
+    <rect x="310" y="676" width="300" height="24" rx="4" fill="#1e293b"/><text x="320" y="692" fill="#e2e8f0">verbatim (receiver dedupes on session.id + event.seq)</text>
+  </g>
+  <g font-family="system-ui,sans-serif" font-size="10">
+    <text x="660" y="596" fill="#e2e8f0" font-weight="600">shutdown():</text>
+    <text x="660" y="612" fill="#94a3b8">provider.shutdown() vs shutdownTimeoutMillis (3s) race</text>
+    <text x="660" y="628" fill="#94a3b8">timeout → warn, provider promise still observed; tail records may be lost</text>
+    <text x="660" y="648" fill="#e2e8f0" font-weight="600">flush():</text>
+    <text x="660" y="664" fill="#94a3b8">deliberately NOT implemented — would be the only source of</text>
+    <text x="660" y="680" fill="#94a3b8">concurrent flushes, whose interaction with shutdown drain</text>
+    <text x="660" y="696" fill="#94a3b8">silently drops tail records (documented in revival Agent Note)</text>
+  </g>
+</svg>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 680" role="img" aria-label="Session telemetry pipeline stages">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="p2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="p3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="p4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="p5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/><stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+    <linearGradient id="p6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48"/><stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="680" rx="16" fill="url(#bg)"/>
+  <text x="720" y="30" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="19" font-weight="700">Session Telemetry Pipeline</text>
+  <text x="720" y="51" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">dsh@47f943859b · core/session → session-telemetry → session-telemetry-otel · capture → project → redact → deliver → export</text>
+
+  <!-- stage 1: produce -->
+  <g>
+    <rect x="20" y="72" width="230" height="34" rx="7" fill="url(#p1)"/>
+    <text x="135" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">1 · PRODUCE</text>
+    <rect x="20" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#2563eb" stroke-opacity="0.35"/>
+    <rect x="32" y="118" width="206" height="64" rx="6" fill="#172554" stroke="#3b82f6"/>
+    <text x="135" y="136" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">Session.append(type,data)</text>
+    <text x="135" y="152" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">single write path for all events</text>
+    <text x="135" y="166" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">turn · user · chunk · tool · header</text>
+    <rect x="32" y="194" width="206" height="64" rx="6" fill="#172554" stroke="#3b82f6"/>
+    <text x="135" y="212" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">snapshotJsonValue</text>
+    <text x="135" y="228" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">reject non-JSON at source (fail-fast)</text>
+    <text x="135" y="242" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">seq = log.length · deepFreeze</text>
+    <rect x="32" y="270" width="206" height="64" rx="6" fill="#172554" stroke="#3b82f6"/>
+    <text x="135" y="288" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">append-only log</text>
+    <text x="135" y="304" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">immutable canonical source of truth</text>
+    <text x="135" y="318" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">persisted verbatim by backends</text>
+    <rect x="32" y="346" width="206" height="64" rx="6" fill="#172554" stroke="#3b82f6"/>
+    <text x="135" y="364" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">session/event firehose</text>
+    <text x="135" y="380" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">published on cordis event bus</text>
+    <text x="135" y="394" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9.5">per-listener containment</text>
+    <text x="135" y="430" text-anchor="middle" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">seed events never publish; firstLiveSeq marks</text>
+    <text x="135" y="444" text-anchor="middle" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">the in-process construction boundary</text>
+  </g>
+
+  <!-- stage 2: capture -->
+  <g>
+    <rect x="250" y="72" width="230" height="34" rx="7" fill="url(#p2)"/>
+    <text x="365" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">2 · CAPTURE</text>
+    <rect x="250" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#0ea5e9" stroke-opacity="0.35"/>
+    <rect x="262" y="118" width="206" height="64" rx="6" fill="#082f49" stroke="#38bdf8"/>
+    <text x="365" y="136" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">SessionTelemetryCoordinator</text>
+    <text x="365" y="152" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">composed by backend in constructor</text>
+    <text x="365" y="166" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">all handlers self-contained</text>
+    <rect x="262" y="194" width="206" height="64" rx="6" fill="#082f49" stroke="#38bdf8"/>
+    <text x="365" y="212" text-anchor="middle" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">subscriptions (live)</text>
+    <text x="365" y="228" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">created · event · disposed · flush</text>
+    <text x="365" y="242" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">+ agent/error relay (ops)</text>
+    <rect x="262" y="270" width="206" height="64" rx="6" fill="#082f49" stroke="#38bdf8"/>
+    <text x="365" y="288" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">adopt(session)</text>
+    <text x="365" y="304" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">handoffCursor (module WeakMap)</text>
+    <text x="365" y="318" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">resume from cursor or firstLiveSeq-1</text>
+    <rect x="262" y="346" width="206" height="64" rx="6" fill="#082f49" stroke="#38bdf8"/>
+    <text x="365" y="364" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">ctx.effect / ctx.on</text>
+    <text x="365" y="380" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">lifecycle = cordis plugin fiber</text>
+    <text x="365" y="394" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">dispose: shutdown markers + drain</text>
+    <text x="365" y="430" text-anchor="middle" fill="#38bdf8" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">HMR reload never re-hands history;</text>
+    <text x="365" y="444" text-anchor="middle" fill="#38bdf8" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">≤cursor events only feed projection</text>
+  </g>
+
+  <!-- stage 3: project -->
+  <g>
+    <rect x="480" y="72" width="230" height="34" rx="7" fill="url(#p3)"/>
+    <text x="595" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">3 · PROJECT</text>
+    <rect x="480" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#059669" stroke-opacity="0.35"/>
+    <rect x="492" y="118" width="206" height="64" rx="6" fill="#022c22" stroke="#34d399"/>
+    <text x="595" y="136" text-anchor="middle" fill="#d1fae5" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">chunk projection</text>
+    <text x="595" y="152" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">first chunk per (turn, step) only</text>
+    <text x="595" y="166" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">content complete in assistant/message</text>
+    <rect x="492" y="194" width="206" height="64" rx="6" fill="#022c22" stroke="#34d399"/>
+    <text x="595" y="212" text-anchor="middle" fill="#d1fae5" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">identityOf</text>
+    <text x="595" y="228" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">session.id · event.type · event.seq</text>
+    <text x="595" y="242" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">+ cwd · parent_id · seed_length</text>
+    <rect x="492" y="270" width="206" height="64" rx="6" fill="#022c22" stroke="#34d399"/>
+    <text x="595" y="288" text-anchor="middle" fill="#d1fae5" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">severityOf</text>
+    <text x="595" y="304" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">isError / reason.kind → error</text>
+    <text x="595" y="318" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">else info · warn for policies</text>
+    <rect x="492" y="346" width="206" height="64" rx="6" fill="#022c22" stroke="#34d399"/>
+    <text x="595" y="364" text-anchor="middle" fill="#d1fae5" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">body = structuredClone(data)</text>
+    <text x="595" y="380" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">deep copy; safe because append</text>
+    <text x="595" y="394" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="9.5">already enforced JSON-serializable</text>
+    <text x="595" y="430" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">two channels: ledger (has seq) vs</text>
+    <text x="595" y="444" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">ops (agent-error, shutdown; no seq)</text>
+  </g>
+
+  <!-- stage 4: redact -->
+  <g>
+    <rect x="710" y="72" width="230" height="34" rx="7" fill="url(#p4)"/>
+    <text x="825" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">4 · REDACT</text>
+    <rect x="710" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#d97706" stroke-opacity="0.35"/>
+    <rect x="722" y="118" width="206" height="64" rx="6" fill="#431407" stroke="#fbbf24"/>
+    <text x="825" y="136" text-anchor="middle" fill="#fef3c7" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">ctx.waterfall(record)</text>
+    <text x="825" y="152" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">'session-telemetry/record' event</text>
+    <text x="825" y="166" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">listeners stack via next()</text>
+    <rect x="722" y="194" width="206" height="64" rx="6" fill="#431407" stroke="#fbbf24"/>
+    <text x="825" y="212" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">zero built-in rules</text>
+    <text x="825" y="228" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">innermost next() = pass-through</text>
+    <text x="825" y="242" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">cleanliness = deployment's rules</text>
+    <rect x="722" y="270" width="206" height="64" rx="6" fill="#431407" stroke="#fbbf24"/>
+    <text x="825" y="288" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">fail-closed</text>
+    <text x="825" y="304" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">throwing rule → record withheld</text>
+    <text x="825" y="318" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">never reaches agent loop</text>
+    <rect x="722" y="346" width="206" height="64" rx="6" fill="#431407" stroke="#fbbf24"/>
+    <text x="825" y="364" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">export copy only</text>
+    <text x="825" y="380" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">canonical log never rewritten</text>
+    <text x="825" y="394" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">(log is deepFrozen anyway)</text>
+    <text x="825" y="430" text-anchor="middle" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">on-demand: rules run at replay time,</text>
+    <text x="825" y="444" text-anchor="middle" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">with the policy mounted then</text>
+  </g>
+
+  <!-- stage 5: deliver -->
+  <g>
+    <rect x="940" y="72" width="230" height="34" rx="7" fill="url(#p5)"/>
+    <text x="1055" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">5 · DELIVER</text>
+    <rect x="940" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#9333ea" stroke-opacity="0.35"/>
+    <rect x="952" y="118" width="206" height="64" rx="6" fill="#2e1065" stroke="#a78bfa"/>
+    <text x="1055" y="136" text-anchor="middle" fill="#ede9fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">backend.emit(record)</text>
+    <text x="1055" y="152" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">sync non-blocking enqueue</text>
+    <text x="1055" y="166" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">contract: nothing slower than a push</text>
+    <rect x="952" y="194" width="206" height="64" rx="6" fill="#2e1065" stroke="#a78bfa"/>
+    <text x="1055" y="212" text-anchor="middle" fill="#ede9fe" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">cursor advance</text>
+    <text x="1055" y="228" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">after accept: handed-off, not</text>
+    <text x="1055" y="242" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">delivered (SDK owns delivery)</text>
+    <rect x="952" y="270" width="206" height="64" rx="6" fill="#2e1065" stroke="#a78bfa"/>
+    <text x="1055" y="288" text-anchor="middle" fill="#ede9fe" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">containment</text>
+    <text x="1055" y="304" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">backend throw → logger.warn</text>
+    <text x="1055" y="318" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">never touches the loop</text>
+    <rect x="952" y="346" width="206" height="64" rx="6" fill="#2e1065" stroke="#a78bfa"/>
+    <text x="1055" y="364" text-anchor="middle" fill="#ede9fe" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">flush? / shutdown()</text>
+    <text x="1055" y="380" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">flush: optional per-turn hint</text>
+    <text x="1055" y="394" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">shutdown: await pipeline quiesce</text>
+    <text x="1055" y="430" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">records emitted before shutdown()</text>
+    <text x="1055" y="444" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">must still be delivered</text>
+  </g>
+
+  <!-- stage 6: export -->
+  <g>
+    <rect x="1170" y="72" width="230" height="34" rx="7" fill="url(#p6)"/>
+    <text x="1285" y="93" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="700">6 · EXPORT (OTel)</text>
+    <rect x="1170" y="106" width="230" height="340" rx="7" fill="#1e293b" stroke="#e11d48" stroke-opacity="0.35"/>
+    <rect x="1182" y="118" width="206" height="64" rx="6" fill="#4c0519" stroke="#fda4af"/>
+    <text x="1285" y="136" text-anchor="middle" fill="#ffe4e6" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">logger.emit()</text>
+    <text x="1285" y="152" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">two scopes: ledger / ops</text>
+    <text x="1285" y="166" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">receiver alerts per scope</text>
+    <rect x="1182" y="194" width="206" height="64" rx="6" fill="#4c0519" stroke="#fda4af"/>
+    <text x="1285" y="212" text-anchor="middle" fill="#ffe4e6" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">BatchLogRecordProcessor</text>
+    <text x="1285" y="228" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">SDK owns batching / retry / loss</text>
+    <text x="1285" y="242" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">scheduledDelayMillis cadence</text>
+    <rect x="1182" y="270" width="206" height="64" rx="6" fill="#4c0519" stroke="#fda4af"/>
+    <text x="1285" y="288" text-anchor="middle" fill="#ffe4e6" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">OTLPLogExporter</text>
+    <text x="1285" y="304" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">OTLP/HTTP → collector</text>
+    <text x="1285" y="318" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">exporter config passed verbatim</text>
+    <rect x="1182" y="346" width="206" height="64" rx="6" fill="#4c0519" stroke="#fda4af"/>
+    <text x="1285" y="364" text-anchor="middle" fill="#ffe4e6" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">shutdown deadline</text>
+    <text x="1285" y="380" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">provider.shutdown() vs 3s race</text>
+    <text x="1285" y="394" text-anchor="middle" fill="#fecdd3" font-family="system-ui,sans-serif" font-size="9.5">tail records may be lost on timeout</text>
+    <text x="1285" y="430" text-anchor="middle" fill="#fda4af" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">flush() deliberately unimplemented</text>
+    <text x="1285" y="444" text-anchor="middle" fill="#fda4af" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">(concurrent flush drops tail records)</text>
+  </g>
+
+  <!-- inter-stage arrows -->
+  <g stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <path d="M250 89 H252"/><path d="M480 89 H482"/><path d="M710 89 H712"/><path d="M940 89 H942"/><path d="M1170 89 H1172"/>
+  </g>
+  <g fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10" font-weight="600">
+    <text x="254" y="84" text-anchor="middle">event</text>
+    <text x="484" y="84" text-anchor="middle">record</text>
+    <text x="714" y="84" text-anchor="middle">record</text>
+    <text x="944" y="84" text-anchor="middle">record</text>
+    <text x="1174" y="84" text-anchor="middle">log</text>
+  </g>
+
+  <!-- timing contract bar -->
+  <rect x="20" y="468" width="1380" height="52" rx="10" fill="#0b1220" stroke="#334155"/>
+  <text x="40" y="492" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Timing contract</text>
+  <text x="40" y="509" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10.5">append: sync + validated at source · capture: sync + contained (stop-on-throw) · deliver: sync non-blocking enqueue · export: SDK-async (batching, retry, loss policy)</text>
+
+  <!-- legend -->
+  <g font-family="system-ui,sans-serif" font-size="10.5">
+    <rect x="20" y="548" width="14" height="14" rx="3" fill="url(#p1)"/><text x="42" y="560" fill="#94a3b8">dsh core/session</text>
+    <rect x="180" y="548" width="14" height="14" rx="3" fill="url(#p2)"/><text x="202" y="560" fill="#94a3b8">session-telemetry</text>
+    <rect x="350" y="548" width="14" height="14" rx="3" fill="url(#p3)"/><text x="372" y="560" fill="#94a3b8">projection</text>
+    <rect x="480" y="548" width="14" height="14" rx="3" fill="url(#p4)"/><text x="502" y="560" fill="#94a3b8">redaction (waterfall)</text>
+    <rect x="670" y="548" width="14" height="14" rx="3" fill="url(#p5)"/><text x="692" y="560" fill="#94a3b8">sink contract</text>
+    <rect x="800" y="548" width="14" height="14" rx="3" fill="url(#p6)"/><text x="822" y="560" fill="#94a3b8">OTel backend</text>
+  </g>
+</svg>

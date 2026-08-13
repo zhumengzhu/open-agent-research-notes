@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Telemetry coordinator internals">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="src" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="coord" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="sink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/><stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="720" rx="16" fill="url(#bg)"/>
+  <text x="600" y="30" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="19" font-weight="700">SessionTelemetryCoordinator Internals</text>
+  <text x="600" y="51" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">live capture (firehose) vs on-demand capture (canonical-log replay) · both converge on the same record → redact → deliver path</text>
+
+  <!-- sources column -->
+  <g>
+    <rect x="20" y="72" width="250" height="30" rx="6" fill="url(#src)"/>
+    <text x="145" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">SOURCES</text>
+    <rect x="20" y="102" width="250" height="360" rx="7" fill="#172554" stroke="#3b82f6" stroke-opacity="0.4"/>
+    <rect x="32" y="114" width="226" height="52" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="145" y="132" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10" font-weight="600">session/created</text>
+    <text x="145" y="148" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">→ adopt(session)</text>
+    <rect x="32" y="178" width="226" height="52" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="145" y="196" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10" font-weight="600">session/event</text>
+    <text x="145" y="212" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">per-append firehose</text>
+    <rect x="32" y="242" width="226" height="52" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="145" y="260" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10" font-weight="600">session/disposed</text>
+    <text x="145" y="276" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">shutdown marker + retire</text>
+    <rect x="32" y="306" width="226" height="52" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="145" y="324" text-anchor="middle" fill="#dbeafe" font-family="ui-monospace,monospace" font-size="10" font-weight="600">session/flush · agent/error</text>
+    <text x="145" y="340" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">flush hint · error relay (ops)</text>
+    <rect x="32" y="370" width="226" height="52" rx="6" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="145" y="388" text-anchor="middle" fill="#dbeafe" font-family="system-ui,sans-serif" font-size="10" font-weight="600">canonical log (on-demand)</text>
+    <text x="145" y="404" text-anchor="middle" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="9">captureSession(session, seq)</text>
+    <text x="145" y="446" text-anchor="middle" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">FEEDBACK_ONLY: consent = the exact</text>
+    <text x="145" y="460" text-anchor="middle" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">object stored at events[event.seq]</text>
+  </g>
+
+  <!-- coordinator column -->
+  <g>
+    <rect x="290" y="72" width="340" height="30" rx="6" fill="url(#coord)"/>
+    <text x="460" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">COORDINATOR (per backend fiber)</text>
+    <rect x="290" y="102" width="340" height="360" rx="7" fill="#082f49" stroke="#38bdf8" stroke-opacity="0.4"/>
+    <rect x="302" y="114" width="316" height="76" rx="6" fill="#0c4a6e" stroke="#38bdf8"/>
+    <text x="460" y="132" text-anchor="middle" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">adopted: Set&lt;Session&gt;</text>
+    <text x="460" y="149" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">double-adoption guard + teardown sweep</text>
+    <text x="460" y="165" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">disposed marks and retires entries</text>
+    <rect x="302" y="202" width="316" height="76" rx="6" fill="#0c4a6e" stroke="#38bdf8"/>
+    <text x="460" y="220" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">chunkSeen: WeakMap&lt;Session, Set&gt;</text>
+    <text x="460" y="237" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">(turn:step) keys whose first chunk shipped</text>
+    <text x="460" y="253" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">rebuilt from log on re-adoption</text>
+    <rect x="302" y="290" width="316" height="76" rx="6" fill="#0c4a6e" stroke="#38bdf8"/>
+    <text x="460" y="308" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">handoffCursor: WeakMap&lt;Session, seq&gt;</text>
+    <text x="460" y="325" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">MODULE-scope ambient state (documented</text>
+    <text x="460" y="341" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">exception to registrations-are-effects)</text>
+    <rect x="302" y="378" width="316" height="72" rx="6" fill="#0c4a6e" stroke="#38bdf8"/>
+    <text x="460" y="396" text-anchor="middle" fill="#e0f2fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">contain(step)</text>
+    <text x="460" y="413" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">per-handler try/catch → logger.warn</text>
+    <text x="460" y="429" text-anchor="middle" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9.5">cordis emit is stop-on-throw</text>
+    <text x="460" y="452" text-anchor="middle" fill="#38bdf8" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">adopt(): replay THROUGH projection from</text>
+    <text x="460" y="466" text-anchor="middle" fill="#38bdf8" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">cursor; ≤cursor feeds track(), not deliver</text>
+  </g>
+
+  <!-- redact column -->
+  <g>
+    <rect x="650" y="72" width="280" height="30" rx="6" fill="url(#red)"/>
+    <text x="790" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">REDACT (waterfall)</text>
+    <rect x="650" y="102" width="280" height="360" rx="7" fill="#431407" stroke="#fbbf24" stroke-opacity="0.4"/>
+    <rect x="662" y="114" width="256" height="66" rx="6" fill="#78350f" stroke="#fbbf24"/>
+    <text x="790" y="132" text-anchor="middle" fill="#fef3c7" font-family="system-ui,sans-serif" font-size="10.5" font-weight="600">record (deep copy)</text>
+    <text x="790" y="149" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">{channel, time, severity, attributes, body}</text>
+    <text x="790" y="165" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">must not be mutated by listeners</text>
+    <rect x="662" y="192" width="256" height="56" rx="6" fill="#78350f" stroke="#fbbf24"/>
+    <text x="790" y="210" text-anchor="middle" fill="#fef3c7" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">rule 1 (deployment)</text>
+    <text x="790" y="227" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">transform next() return value</text>
+    <rect x="662" y="260" width="256" height="56" rx="6" fill="#78350f" stroke="#fbbf24"/>
+    <text x="790" y="278" text-anchor="middle" fill="#fef3c7" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">rule 2 …</text>
+    <text x="790" y="295" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">stacking; return w/o next() replaces all</text>
+    <rect x="662" y="328" width="256" height="56" rx="6" fill="#78350f" stroke="#fbbf24"/>
+    <text x="790" y="346" text-anchor="middle" fill="#fef3c7" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">innermost next() → pass-through</text>
+    <text x="790" y="363" text-anchor="middle" fill="#fcd34d" font-family="system-ui,sans-serif" font-size="9.5">zero rules shipped by the package</text>
+    <text x="790" y="420" text-anchor="middle" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">throw → record withheld (fail-closed)</text>
+    <text x="790" y="434" text-anchor="middle" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">export copy only; log never rewritten</text>
+  </g>
+
+  <!-- sink column -->
+  <g>
+    <rect x="950" y="72" width="230" height="30" rx="6" fill="url(#sink)"/>
+    <text x="1065" y="91" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="11.5" font-weight="700">BACKEND SINK</text>
+    <rect x="950" y="102" width="230" height="360" rx="7" fill="#2e1065" stroke="#a78bfa" stroke-opacity="0.4"/>
+    <rect x="962" y="114" width="206" height="76" rx="6" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="1065" y="132" text-anchor="middle" fill="#ede9fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">emit(record)</text>
+    <text x="1065" y="149" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">sync non-blocking enqueue</text>
+    <text x="1065" y="165" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">record owned by backend after call</text>
+    <rect x="962" y="202" width="206" height="76" rx="6" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="1065" y="220" text-anchor="middle" fill="#ede9fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">flush?()</text>
+    <text x="1065" y="237" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">optional per-turn-end hint</text>
+    <text x="1065" y="253" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">OTel backend: NOT implemented</text>
+    <rect x="962" y="290" width="206" height="76" rx="6" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="1065" y="308" text-anchor="middle" fill="#ede9fe" font-family="ui-monospace,monospace" font-size="10.5" font-weight="600">shutdown()</text>
+    <text x="1065" y="325" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">drain + quiesce (SDK contract)</text>
+    <text x="1065" y="341" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="9.5">failure → warn, never fail teardown</text>
+    <text x="1065" y="422" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">deliver(): emit → then advance cursor</text>
+    <text x="1065" y="436" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="9.5" font-style="italic">(handed-off ≠ delivered)</text>
+  </g>
+
+  <!-- flow arrows -->
+  <g stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <path d="M270 220 H290"/><path d="M270 240 H290"/>
+    <path d="M630 220 H650"/><path d="M930 220 H950"/>
+  </g>
+  <g fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9.5" font-weight="600">
+    <text x="280" y="210" text-anchor="middle">subscribe</text>
+    <text x="640" y="210" text-anchor="middle">redact()</text>
+    <text x="940" y="210" text-anchor="middle">deliver()</text>
+  </g>
+
+  <!-- bottom notes -->
+  <rect x="20" y="484" width="1160" height="90" rx="10" fill="#0b1220" stroke="#334155"/>
+  <text x="40" y="506" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Key invariants</text>
+  <text x="40" y="526" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10.5">· live: per-append capture on the hot path, synchronous and contained · on-demand: canonical-log replay, rules run at replay time</text>
+  <text x="40" y="543" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10.5">· chunk projection: first chunk per (turn,step) ships; dropped chunks do not advance the cursor → re-adoption re-drops deterministically</text>
+  <text x="40" y="560" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10.5">· cursor start = firstLiveSeq - 1: constructor seeds (resume/fork/replay) never re-handed · entries die with their sessions; missing entry = re-hand everything</text>
+</svg>
