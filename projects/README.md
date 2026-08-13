@@ -13,6 +13,7 @@
 | [mimo-code/](./mimo-code/) | [XiaomiMiMo/MiMo-Code](https://github.com/XiaomiMiMo/MiMo-Code) | [README](./mimo-code/README.md) |
 | [multica/](./multica/) | [multica-ai/multica](https://github.com/multica-ai/multica) | [README](./multica/README.md) |
 | [cordis/](./cordis/) | [cordiverse/cordis](https://github.com/cordiverse/cordis) | [README](./cordis/README.md) |
+| [dsh/](./dsh/) | [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | [README](./dsh/README.md) |
 
 每个项目目录建议包含：
 
